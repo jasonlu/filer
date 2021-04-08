@@ -1,0 +1,60 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+       {
+        "name": "Chrome",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}/src",
+        "sourceMapPathOverrides": {
+          "webpack:///src/*": "${webRoot}/*"
+        }
+      },
+      {
+        "name": "Debug Renderer Process",
+        "type": "chrome",
+        "request": "launch",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+        "windows": {
+          "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+        },
+        "runtimeArgs": [
+          "--inspect=9229",
+          "${workspaceFolder}/electron/main.js",
+          "--remote-debugging-port=9222"
+        ],
+        "env": {
+          "ELECTRON_START_URL": "http://localhost:3000"
+        },
+        "webRoot": "${workspaceFolder}/src",
+        "sourceMapPathOverrides": {
+          "webpack:///src/*": "${webRoot}/*"
+        }
+      },
+      {
+        "name": "Debug Main Process",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+        "windows": {
+          "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+        },
+        "runtimeArgs": [
+          "--inspect=9229",
+          "${workspaceFolder}/electron/main.js",
+          "--remote-debugging-port=9222"
+        ],
+        "env": {
+          "ELECTRON_START_URL": "http://localhost:3000"
+        },
+        "args" : ["."],
+        "outputCapture": "std",
+        "resolveSourceMapLocations": [
+          "${workspaceFolder}/**",
+          "!**/node_modules/**"
+        ]
+      }
+    ]
+  }

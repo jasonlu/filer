@@ -1,0 +1,12 @@
+ 
+ul.file-list{
+    text-align: left;
+    $borderStyle: 1px solid #ccc;
+    >li {
+        border-top: $borderStyle;
+        list-style-type: none; /* Remove bullets */
+        &:last-child {
+            border-bottom: $borderStyle;
+        }
+    }
+}
